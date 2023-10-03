@@ -1,0 +1,58 @@
+from random import choices
+import pygame
+from sys import exit
+
+class Player:
+    def __init__(self):
+        player1 = pygame.image.load('images/player1.png').convert_alpha()
+        player2 = pygame.image.load('images/player2.png').convert_alpha()
+        self.image = pygame.image.load("images/player.png").convert_alpha()
+        self.rect = self.image.get_rect(midbottom = (80, 300))
+
+    def Player_movement(self):
+        self.rect.x += 4:
+    
+    def display(self):
+        screen.blit(self.image, self.rect)
+
+
+        
+
+
+
+pygame.init()
+screen = pygame.display.set_mode((800, 400))
+text_font = pygame.font.Font(None, 50)
+clock = pygame.time.Clock()
+
+
+sky_surface = pygame.image.load('images/new2.jpg').convert_alpha()
+ground_surface = pygame.image.load('images/ground1.jpg').convert_alpha()
+
+player_image = pygame.image.load('images/player.png').convert_alpha()
+player_rect = player_image.get_rect(midbottom = (80, 300))
+
+
+
+while True:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            pygame.quit()
+            exit()
+        
+        if event.type == pygame.MOUSEMOTION:
+            print(event.pos)
+    
+    screen.blit(sky_surface, (0, 0))
+    screen.blit(ground_surface, (0, 300))
+
+    #player
+    player_ob = Player()
+    player_ob.display()
+
+
+    
+
+
+    pygame.display.update()
+    clock.tick(60)
